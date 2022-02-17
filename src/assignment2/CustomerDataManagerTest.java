@@ -1,5 +1,6 @@
 package assignment2;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
@@ -8,6 +9,10 @@ import java.util.Optional;
 public class CustomerDataManagerTest {
 
     public static void main(String[] args) {
+
+        File directory = new File("./src/customers.dat");
+        System.out.println(directory.getAbsolutePath());
+        System.out.println(directory.exists());
 
         CustomerDataManager manager;
         try {

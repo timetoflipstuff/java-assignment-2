@@ -5,7 +5,7 @@ import java.util.*;
 import java.util.stream.IntStream;
 
 final class Env {
-    final static String DATA_FILE = "C:\\Users\\ankit\\My Drive\\semester2\\Database Pgm Using Java - ITC-5201-IRB\\assignment2\\src\\customers.dat";
+    final static String DATA_FILE = "./src/customers.dat";
     final static boolean CREATE_DB_IF_NOT_EXISTS = true;
 }
 
