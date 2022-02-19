@@ -165,6 +165,7 @@ class CustomerDialog extends JPanel {
     public CustomerDialog() {
         super();
         // Setting up input fields and adding them to the panel
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.idField = new JTextField(5);
         this.nameField = new JTextField(5);
         this.phoneField = new JTextField(5);
