@@ -54,11 +54,22 @@ public class CustomerDataManager {
      * @return true is customer added successfully, false if customer exists in database with given ID.
      */
     public boolean addCustomer(int id, String name, String phone, String email, String postalCode) {
-        if (list.stream().anyMatch(item -> item.id() == id)) {
+        CustomerDataModel customerDataModel = new CustomerDataModel(id, name, phone, email, postalCode);
+        return addCustomer(customerDataModel);
+    }
+
+    /**
+     * Adds a customer to database.
+     *
+     * @param customerDataModel Data model containing customer info
+     * @return true is customer added successfully, false if customer exists in database with given ID.
+     */
+    public boolean addCustomer(CustomerDataModel customerDataModel) {
+        if (list.stream().anyMatch(item -> item.id() == customerDataModel.id())) {
+            System.out.println("ID match");
             return false;
         }
 
-        CustomerDataModel customerDataModel = new CustomerDataModel(id, name, phone, email, postalCode);
         list.add(0, customerDataModel);
         // notify listeners
         if (dataChangeListener != null){
@@ -78,8 +89,19 @@ public class CustomerDataManager {
      * @return if edit is success
      */
     public boolean editCustomer(int id, String name, String phone, String email, String postalCode) {
+        CustomerDataModel model = new CustomerDataModel(id, name, phone, email, postalCode);
+        return editCustomer(model);
+    }
+
+    /**
+     * Edits (or rather deletes are re-adds) an existing customer entry
+     *
+     * @param model      data model containing customer info
+     * @return if edit is success
+     */
+    public boolean editCustomer(CustomerDataModel model) {
         int index = IntStream.range(0, list.size())
-                .filter(i -> list.get(i).id() == id)
+                .filter(i -> list.get(i).id() == model.id())
                 .findFirst()
                 .orElse(-1);
 
@@ -87,7 +109,7 @@ public class CustomerDataManager {
             return false;
         } else {
             list.remove(index);
-            CustomerDataModel model = new CustomerDataModel(id, name, phone, email, postalCode);
+
             list.add(index, model);
 
             if (dataChangeListener != null){
