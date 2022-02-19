@@ -77,7 +77,7 @@ class MainFrame extends JFrame {
      */
     public JMenu createCustomerMenu() {
         // Creating the Customers menu with Add and Edit submenus
-        JMenu productMenu = new JMenu("Products");
+        JMenu productMenu = new JMenu("Customers");
         productMenu.add(createAddCustomerMenuItem());
         productMenu.add(createEditCustomerMenuItem());
         return productMenu;
