@@ -6,6 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+/**
+ * Contains all the colors used in this project
+ */
 class Colors {
     static final Color red = new Color(232, 57, 95);
 }
@@ -254,10 +257,10 @@ class CustomersTable extends Panel implements DataChangeListener, ListCellRender
 
     @Override
     public Component getListCellRendererComponent(JList<? extends CustomerDataModel> list, CustomerDataModel value, int index, boolean isSelected, boolean cellHasFocus) {
-        return createItemRow(value);
+        return createRow(value);
     }
 
-    private JPanel createItemRow(CustomerDataModel model) {
+    private JPanel createRow(CustomerDataModel model) {
         // Creating the row
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(1, 5));
